@@ -58,6 +58,14 @@ public class ScoreManager : MonoBehaviour
         correctScore += points;
     }
 
+    public void Reset()
+    {
+        thousands.text = 0.ToString();
+        hundreds.text = 0.ToString();
+        tens.text = 0.ToString();
+        ones.text = 0.ToString();
+    }
+
     public void IncreaseThousands()
     {
         int value = int.Parse(thousands.text);
