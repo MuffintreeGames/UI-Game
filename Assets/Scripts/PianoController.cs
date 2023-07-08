@@ -62,6 +62,14 @@ public class PianoController : MonoBehaviour
     void Update()
     {
         SoundSwitchboard();
+        if (timeLeftToPlay > 0f)
+        {
+            timeLeftToPlay -= Time.deltaTime;
+            if (timeLeftToPlay <= 0f)
+            {
+                ResetNoteDisplay();
+            }
+        }
         if (notesPlayed.Count >= 1)
         {
             noteDisplay1.text = notesPlayed[0].ToString();
@@ -74,6 +82,14 @@ public class PianoController : MonoBehaviour
         {
             noteDisplay3.text = notesPlayed[2].ToString();
         }
+    }
+
+    public void ResetNoteDisplay()
+    {
+        notesPlayed.Clear();
+        noteDisplay1.text = "";
+        noteDisplay2.text = "";
+        noteDisplay3.text = "";
     }
     public void SoundSwitchboard()
     {
@@ -90,56 +106,129 @@ public class PianoController : MonoBehaviour
     public void PlaySound1()
     {
         sound1.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(1);
         timeLeftToPlay = maxTimeBetweenNotes;
+    }
+
+    void CheckNotesPlayed()
+    {
+        if (notesPlayed[0] == coinNotes[0] && notesPlayed[1] == coinNotes[1] && notesPlayed[2] == coinNotes[2])
+        {
+            if (coinSfxList.Count > 0)
+            {
+                Destroy(coinSfxList[0]);
+                coinSfxList.RemoveAt(0);
+            }
+            return;
+        }
     }
 
     public void PlaySound2()
     {
         sound2.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(2);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound3()
     {
         sound3.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(3);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound4()
     {
         sound4.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(4);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound5()
     {
         sound5.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(5);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound6()
     {
         sound6.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(6);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound7()
     {
         sound7.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(7);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound8()
     {
         sound8.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(8);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
@@ -147,7 +236,15 @@ public class PianoController : MonoBehaviour
     {
         // slide whistle/clown horn/meme sound? put next to keyboard?
         sound9.Play();
+        if (notesPlayed.Count > 2)
+        {
+            ResetNoteDisplay();
+        }
         notesPlayed.Add(9);
+        if (notesPlayed.Count == 3)
+        {
+            CheckNotesPlayed();
+        }
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
