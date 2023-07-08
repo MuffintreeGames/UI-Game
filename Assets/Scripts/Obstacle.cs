@@ -16,7 +16,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(obstacleSpeed * Time.deltaTime, 0f, 0f);
+        transform.position -= new Vector3(obstacleSpeed * TimeController.AdjustedDeltaTime(), 0f, 0f);
         if (transform.position.x <= despawnX)
         {
             Destroy(gameObject);

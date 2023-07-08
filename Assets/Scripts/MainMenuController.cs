@@ -24,11 +24,11 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadCredits()
     {
-        SceneManager.LoadSceneAsync("Credits");
+        SceneManager.LoadScene("Credits");
     }
 
     public void ReturnToTitle()
     {
-        SceneManager.LoadSceneAsync("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 }

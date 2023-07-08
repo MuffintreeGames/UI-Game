@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour //spawns objects for AI
     // Update is called once per frame
     void Update()
     {
-        timeLeftToObstacle -= Time.deltaTime;
+        timeLeftToObstacle -= TimeController.AdjustedDeltaTime();
         if (timeLeftToObstacle <= 0f)
         {
             timeLeftToObstacle = timeBetweenObstacles;

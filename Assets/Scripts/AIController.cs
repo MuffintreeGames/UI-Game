@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
@@ -24,7 +25,7 @@ public class AIController : MonoBehaviour
     void Update()
     {
         if (invincible) { 
-            remainingInvincibility -= Time.deltaTime;
+            remainingInvincibility -= TimeController.AdjustedDeltaTime();
             if (remainingInvincibility <= 0f) {
                 invincible = false;
                 render.color = new Color(render.color.r, render.color.g, render.color.b);

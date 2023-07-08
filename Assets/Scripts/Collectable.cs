@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public float pointValue;
+    public int pointValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +22,7 @@ public class Collectable : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("AI"))
         {
             Debug.Log("gain points!");
+            ScoreManager.GainPoints(pointValue);
             Destroy(gameObject);
         }
     }
