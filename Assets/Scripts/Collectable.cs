@@ -30,6 +30,9 @@ public class Collectable : MonoBehaviour
             if (sfxType == "coin")
             {
                 PianoController.QueueCoinSfx();
+            } else if (sfxType == "heart")
+            {
+                PianoController.QueueHeartSfx();
             }
             Destroy(gameObject);
         }

@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI tens;
     public TextMeshProUGUI ones;
 
-    public float timeLimit = 3f;
+    public float timeLimit = 5f;
     bool countingDown = false;
     float timeLeft = 0f;
 

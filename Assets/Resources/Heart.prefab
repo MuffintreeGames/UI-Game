@@ -134,3 +134,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 0
   healthValue: 1
+  sfxType: heart
