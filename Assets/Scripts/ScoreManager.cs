@@ -15,9 +15,8 @@ public class ScoreManager : MonoBehaviour
     bool countingDown = false;
     float timeLeft = 0f;
 
-    static int correctScore = 0;
+    public static int correctScore = 0;
     int currentScore = 0;
-    bool uniqueReset = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +26,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (uniqueReset && HealthManager.requireReset) {
-            correctScore = 0;
-            uniqueReset = false;
-        }
-        if (!uniqueReset && !HealthManager.requireReset) uniqueReset = true;
-
         currentScore = (int.Parse(thousands.text) * 1000) + (int.Parse(hundreds.text) * 100) + (int.Parse(tens.text) * 10) + int.Parse(ones.text);
         if (currentScore != correctScore) {
             if (!countingDown)

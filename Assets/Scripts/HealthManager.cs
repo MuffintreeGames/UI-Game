@@ -15,15 +15,12 @@ public class HealthManager : MonoBehaviour
     bool countingDown = false;
     float timeLeft = 0f;
 
-    public static bool requireReset = false;
-
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = 3;
         correctHealth = 3;
         countingDown = false;
-        requireReset = false;
         timeLimit = 3f;
     }
 
@@ -44,7 +41,7 @@ public class HealthManager : MonoBehaviour
             currentHealth += 1;
         }
         
-        if (requireReset || currentHealth != correctHealth)
+        if (currentHealth != correctHealth)
         {
             if (!countingDown)
             {
@@ -57,16 +54,8 @@ public class HealthManager : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 if (timeLeft <= 0)
                 {
-                    if (requireReset)
-                    {
-                        Debug.Log("Ran out of time to reset game!");
-                        GameOverManager.TriggerGameOver("Failed to reset after losing all hearts");
-                    }
-                    else
-                    {
                         Debug.Log("Ran out of time fixing health!");
                         GameOverManager.TriggerGameOver("Incorrect health: should have been " + correctHealth + " instead of " + currentHealth);
-                    }
                 }
             }
         } else
@@ -81,7 +70,6 @@ public class HealthManager : MonoBehaviour
 
     public void ResetHealth()
     {
-        requireReset = false;
         heart1.AddHeart();
         heart2.AddHeart();
         heart3.AddHeart();
@@ -92,7 +80,7 @@ public class HealthManager : MonoBehaviour
         if (correctHealth < 0)
         {
             correctHealth = 3;
-            requireReset = true;
+            ScoreManager.correctScore = 0;
         }
     }
 
