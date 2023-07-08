@@ -1064,7 +1064,6 @@ MonoBehaviour:
   heart1: {fileID: 1713570874}
   heart2: {fileID: 109012815}
   heart3: {fileID: 739215725}
-  timeLimit: 3
 --- !u!1 &93952052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6881,7 +6880,6 @@ MonoBehaviour:
   hundreds: {fileID: 39242458}
   tens: {fileID: 33877464}
   ones: {fileID: 1513776725}
-  timeLimit: 3
 --- !u!1 &987928056
 GameObject:
   m_ObjectHideFlags: 0
@@ -8532,7 +8530,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374827967}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -8569,9 +8567,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 965359390}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
-        m_MethodName: Reset
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8646,7 +8644,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404382461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8710,7 +8708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topRegion: 0
   scoreManager: {fileID: 965359390}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1374827970}
   Up: {fileID: 21300000, guid: ae3a897bc7d519a41b3ca37627a9c109, type: 3}
   Down: {fileID: 21300000, guid: a3fd3459efea8f04aaa3384f002f1c65, type: 3}
 --- !u!1 &1442267016
@@ -10911,7 +10909,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940928926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10975,7 +10973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topRegion: 1
   scoreManager: {fileID: 965359390}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1374827970}
   Up: {fileID: 21300000, guid: ae3a897bc7d519a41b3ca37627a9c109, type: 3}
   Down: {fileID: 21300000, guid: a3fd3459efea8f04aaa3384f002f1c65, type: 3}
 --- !u!1 &2004590313
