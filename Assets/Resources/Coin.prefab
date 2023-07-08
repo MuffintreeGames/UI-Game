@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointValue: 50
+  healthValue: 0
+  sfxType: coin

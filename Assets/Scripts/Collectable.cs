@@ -6,6 +6,7 @@ public class Collectable : MonoBehaviour
 {
     public int pointValue;
     public int healthValue;
+    public string sfxType = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +23,14 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("AI"))
         {
+            
             Debug.Log("gain points!");
             ScoreManager.GainPoints(pointValue);
             HealthManager.GainHealth(healthValue);
+            if (sfxType == "coin")
+            {
+                PianoController.QueueCoinSfx();
+            }
             Destroy(gameObject);
         }
     }

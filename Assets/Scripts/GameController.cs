@@ -46,6 +46,10 @@ public class GameController : MonoBehaviour //spawns objects for AI
     // Update is called once per frame
     void Update()
     {
+        if (timeUntilTerrain > 0f)
+        {
+            timeUntilTerrain -= TimeController.AdjustedDeltaTime();
+        }
         timeLeftToObstacle -= TimeController.AdjustedDeltaTime();
         if (timeLeftToObstacle <= 0f)
         {
@@ -62,8 +66,7 @@ public class GameController : MonoBehaviour //spawns objects for AI
             objectType = Random.Range(0, 5);
         } else
         {
-            //objectType = Random.Range(0, 6);
-            objectType = 5;
+            objectType = Random.Range(0, 6);
         }
         GameObject obstacle = null;
         int spawnHeight = Random.Range(0, 3);

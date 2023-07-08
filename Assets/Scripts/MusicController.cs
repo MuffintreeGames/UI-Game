@@ -11,14 +11,27 @@ public class MusicController : MonoBehaviour
     public Button button3;
     public Button button4;
 
+    AudioSource music1;
+    AudioSource music2;
+    AudioSource music3;
+    AudioSource music4;
+    AudioSource currentMusic;
+
     private static int correctMusic = 0;
-    bool countingDown = false;
-    public float timeLimit = 30f;
-    float timeLeft = 0f;
+    static bool countingDown = false;
+    public float timeLimit = 5f;
+    static float timeLeft = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        correctMusic = 0;
+        musicChoice = 0;
+        countingDown = false;
+        music1 = button1.GetComponent<AudioSource>();
+        music2 = button2.GetComponent<AudioSource>();
+        music3 = button3.GetComponent<AudioSource>();
+        music4 = button4.GetComponent<AudioSource>();
+        currentMusic = music1;
     }
 
     // Update is called once per frame
@@ -82,26 +95,50 @@ public class MusicController : MonoBehaviour
 
     public void PlayMusic1()
     {
+        float musicTime = currentMusic.time;
+        currentMusic.Stop();
         musicChoice = 0;
+        currentMusic = music1;
+        music1.time = musicTime;
+        music1.Play();
     }
 
     public void PlayMusic2()
     {
+        float musicTime = currentMusic.time;
+        currentMusic.Stop();
         musicChoice = 1;
+        currentMusic = music2;
+        music2.time = musicTime;
+        music2.Play();
     }
 
     public void PlayMusic3()
     {
+        float musicTime = currentMusic.time;
+        currentMusic.Stop();
         musicChoice = 2;
+        currentMusic = music3;
+        music3.time = musicTime;
+        music3.Play();
     }
 
     public void PlayMusic4()
     {
+        float musicTime = currentMusic.time;
+        currentMusic.Stop();
         musicChoice = 3;
+        currentMusic = music4;
+        music4.time = musicTime;
+        music4.Play();
     }
 
     public static void SetCorrectMusic(int choice)
     {
         correctMusic = choice;
+        if (countingDown)
+        {
+            timeLeft += 1;
+        }
     }
 }
