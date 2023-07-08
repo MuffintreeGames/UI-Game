@@ -269,7 +269,6 @@ public class PianoController : MonoBehaviour
 
     public void PlaySound9()
     {
-        // slide whistle/clown horn/meme sound? put next to keyboard?
         sound9.Play();
         if (notesPlayed.Count > 2)
         {
