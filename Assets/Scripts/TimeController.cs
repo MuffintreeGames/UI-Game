@@ -8,6 +8,8 @@ public class TimeController : MonoBehaviour
     static bool started = false;
     static float timeMultiplier = 1f;
     static float timePlayed = 0f;
+    float speedIncreaseInterval = 60f;
+    float timeUntilSpeedIncrease = 60f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,12 @@ public class TimeController : MonoBehaviour
         } else
         {
             timePlayed += Time.deltaTime;
+            timeUntilSpeedIncrease -= Time.deltaTime;
+            if (timeUntilSpeedIncrease <= 0f)
+            {
+                timeMultiplier += 0.2f;
+                timeUntilSpeedIncrease = speedIncreaseInterval;
+            }
         }
     }
 
@@ -44,6 +52,7 @@ public class TimeController : MonoBehaviour
         timeMultiplier = 1f;
         Debug.Log("game starting!");
         started = true;
+        timeUntilSpeedIncrease = speedIncreaseInterval;
     }
 
     public static float AdjustedDeltaTime()

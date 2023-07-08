@@ -7,13 +7,14 @@ public class HealthManager : MonoBehaviour
     public UIHeart heart1;
     public UIHeart heart2;
     public UIHeart heart3;
+    static GameObject checkpoint;
 
-    private int currentHealth = 3;
-    private static int correctHealth = 3;
+    public static int currentHealth = 3;
+    public static int correctHealth = 3;
 
-    public float timeLimit = 5f;
-    bool countingDown = false;
-    float timeLeft = 0f;
+    public static float timeLimit = 5f;
+    static bool countingDown = false;
+    static float timeLeft = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class HealthManager : MonoBehaviour
         correctHealth = 3;
         countingDown = false;
         timeLimit = 3f;
+        checkpoint = (GameObject)Resources.Load("HealthCheckpoint");
     }
 
     // Update is called once per frame
@@ -68,6 +70,14 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    public static void AddTime(float time)
+    {
+        if (countingDown && time > timeLeft)
+        {
+            timeLeft = time;
+        }
+    }
+
     public void ResetHealth()
     {
         heart1.AddHeart();
@@ -76,11 +86,17 @@ public class HealthManager : MonoBehaviour
     }
 
     public static void TakeDamage() {
+        if (countingDown)
+        {
+            Debug.Log("lost health while already counting down, creating health checkpoint!");
+            GameObject newCheckpoint = Instantiate(checkpoint);
+            newCheckpoint.GetComponent<HealthCheckpoint>().targetHealth = correctHealth;
+        }
         correctHealth -= 1;
         if (correctHealth <= 0) //died
         {
             correctHealth = 3;
-            ScoreManager.correctScore = 0;
+            ScoreManager.LosePoints(ScoreManager.currentScore);
             PianoController.QueueDeathSfx();
         } else
         {
@@ -95,6 +111,11 @@ public class HealthManager : MonoBehaviour
         {
             correctHealth = 3;
             ScoreManager.GainPoints(150);
+        } else if (countingDown)
+        {
+            Debug.Log("gained health while already counting down, creating health checkpoint!");
+            GameObject newCheckpoint = Instantiate(checkpoint);
+            newCheckpoint.GetComponent<HealthCheckpoint>().targetHealth = correctHealth - 1;
         }
     }
 }
