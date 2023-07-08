@@ -12,6 +12,11 @@ public class TimerController : MonoBehaviour
     float timeIncrement = 10f;
 
     // Update is called once per frame
+
+    void Start()
+    {
+        timeLeft = 30f;
+    }
     void Update()
     {
         UpdateTimePlayed();
