@@ -4,19 +4,75 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    public GameObject heart1;
-    public GameObject heart2;
-    public GameObject heart3;
+    public UIHeart heart1;
+    public UIHeart heart2;
+    public UIHeart heart3;
+
+    private int currentHealth = 3;
+    private static int correctHealth = 3;
+
+    public float timeLimit = 3f;
+    bool countingDown = false;
+    float timeLeft = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = 3;
+        correctHealth = 3;
+        countingDown = false;
+        timeLimit = 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        currentHealth = 0;
+        if (heart1.IsHeartActive())
+        {
+            currentHealth += 1;
+        }
+        if (heart2.IsHeartActive())
+        {
+            currentHealth += 1;
+        }
+        if (heart3.IsHeartActive())
+        {
+            currentHealth += 1;
+        }
+
+        if (currentHealth != correctHealth)
+        {
+            if (!countingDown)
+            {
+                Debug.Log("Bad health! Starting countdown!");
+                countingDown = true;
+                timeLeft = timeLimit;
+            }
+            else
+            {
+                timeLeft -= Time.deltaTime;
+                if (timeLeft <= 0)
+                {
+                    Debug.Log("Ran out of time fixing health!");
+                    GameOverManager.TriggerGameOver("Incorrect health: should have been " + correctHealth + " instead of " + currentHealth);
+                }
+            }
+        } else
+        {
+            if (countingDown)
+            {
+                Debug.Log("Fixed health! Stopping countdown!");
+                countingDown = false;
+            }
+        }
+    }
+
+    public static void TakeDamage() {
+        correctHealth -= 1;
+        if (correctHealth < 0)
+        {
+            correctHealth = 0;
+        }
     }
 }

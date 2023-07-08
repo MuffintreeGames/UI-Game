@@ -65,6 +65,14 @@ public class UIHeart : MonoBehaviour
         }
     }
 
+    public void HeartReleased()
+    {
+        if (!heartActive && held)
+        {
+            held = false;
+        }
+    }
+
     public void HeartTapped()
     {
         if (heartActive)
@@ -94,5 +102,10 @@ public class UIHeart : MonoBehaviour
         heartActive = false;
         taps = 0;
         imageRenderer.sprite = emptyHeart;
+    }
+
+    public bool IsHeartActive()
+    {
+        return heartActive;
     }
 }

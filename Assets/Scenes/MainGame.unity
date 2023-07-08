@@ -751,9 +751,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b516450b3a91c714d868accc06a6ee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heart1: {fileID: 0}
-  heart2: {fileID: 0}
-  heart3: {fileID: 0}
+  heart1: {fileID: 1713570874}
+  heart2: {fileID: 109012815}
+  heart3: {fileID: 739215725}
 --- !u!1 &109012810
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +766,8 @@ GameObject:
   - component: {fileID: 109012814}
   - component: {fileID: 109012813}
   - component: {fileID: 109012812}
+  - component: {fileID: 109012816}
+  - component: {fileID: 109012815}
   m_Layer: 0
   m_Name: Heart2
   m_TagString: Untagged
@@ -875,6 +877,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109012810}
   m_CullTransparentMesh: 1
+--- !u!114 &109012815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109012810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7ae6ea2fdd6ab4b9a332a0930a8c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  crackedHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  emptyHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  resetTime: 3
+--- !u!114 &109012816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109012810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 109012815}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartHeld
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 109012815}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartTapped
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 109012815}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartReleased
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &193272331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +2000,8 @@ GameObject:
   - component: {fileID: 739215723}
   - component: {fileID: 739215722}
   - component: {fileID: 739215721}
+  - component: {fileID: 739215725}
+  - component: {fileID: 739215724}
   m_Layer: 0
   m_Name: Heart3
   m_TagString: Untagged
@@ -2030,6 +2111,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739215719}
   m_CullTransparentMesh: 1
+--- !u!114 &739215724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739215719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 739215725}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartHeld
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 739215725}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartTapped
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 739215725}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartReleased
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &739215725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739215719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7ae6ea2fdd6ab4b9a332a0930a8c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  crackedHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  emptyHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  resetTime: 3
 --- !u!1 &849399000
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,6 +3188,38 @@ MonoBehaviour:
         - m_Target: {fileID: 1713570874}
           m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
           m_MethodName: HeartHeld
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1713570874}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartTapped
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1713570874}
+          m_TargetAssemblyTypeName: UIHeart, Assembly-CSharp
+          m_MethodName: HeartReleased
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

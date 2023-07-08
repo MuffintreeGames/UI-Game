@@ -39,6 +39,7 @@ public class AIController : MonoBehaviour
         invincible = true;
         remainingInvincibility = invincibilityTime;
         render.color = new Color(render.color.r, render.color.g, render.color.b, invincibleAlpha);
+        HealthManager.TakeDamage();
     }
 
     public void Jump()
