@@ -36,24 +36,29 @@ public class PianoController : MonoBehaviour
 
     List<int> notesPlayed;
 
-    /*bool countingDown = false;
-    public float timeLimit = 10f;
-    float timeLeft = 0f;*/
-
     public static GameObject coinSfx;
     static int[] coinNotes = { 2, 6, 7 };
     public static GameObject heartSfx;
+    static int[] heartNotes = { 3, 4, 5 };
     public static GameObject hitSfx;
+    static int[] hitNotes = { 1, 3, 1 };
+    public static GameObject deathSfx;
+    static int[] deathNotes = { 8, 4, 1 };
     static List<GameObject> coinSfxList;
     static List<GameObject> heartSfxList;
     static List<GameObject> hitSfxList;
+    static List<GameObject> deathSfxList;
     // Start is called before the first frame update
     void Start()
     {
         coinSfx = (GameObject)Resources.Load("CoinSfx");
+        heartSfx = (GameObject)Resources.Load("HeartSfx");
+        hitSfx = (GameObject)Resources.Load("HitSfx");
+        deathSfx = (GameObject)Resources.Load("DeathSfx");
         coinSfxList = new List<GameObject>();
         heartSfxList = new List<GameObject>();
         hitSfxList = new List<GameObject>();
+        deathSfxList = new List<GameObject>();
         notesPlayed = new List<int>();
         timeLeftToPlay = 0f;
     }
@@ -103,6 +108,45 @@ public class PianoController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) PlaySound8();
         if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) PlaySound9();
     }
+
+    void CheckNotesPlayed()
+    {
+        if (notesPlayed[0] == coinNotes[0] && notesPlayed[1] == coinNotes[1] && notesPlayed[2] == coinNotes[2])
+        {
+            Debug.Log("played coin sound!");
+            if (coinSfxList.Count > 0)
+            {
+                Destroy(coinSfxList[0]);
+                coinSfxList.RemoveAt(0);
+            }
+            return;
+        } else if (notesPlayed[0] == heartNotes[0] && notesPlayed[1] == heartNotes[1] && notesPlayed[2] == heartNotes[2])
+        {
+            Debug.Log("played heart sound!");
+            if (heartSfxList.Count > 0)
+            {
+                Destroy(heartSfxList[0]);
+                heartSfxList.RemoveAt(0);
+            }
+        } else if (notesPlayed[0] == hitNotes[0] && notesPlayed[1] == hitNotes[1] && notesPlayed[2] == hitNotes[2])
+        {
+            Debug.Log("played hit sound!");
+            if (hitSfxList.Count > 0)
+            {
+                Destroy(hitSfxList[0]);
+                hitSfxList.RemoveAt(0);
+            }
+        } else if (notesPlayed[0] == deathNotes[0] && notesPlayed[1] == deathNotes[1] && notesPlayed[2] == deathNotes[2])
+        {
+            Debug.Log("played death sound!");
+            if (deathSfxList.Count > 0)
+            {
+                Destroy(deathSfxList[0]);
+                deathSfxList.RemoveAt(0);
+            }
+        }
+    }
+
     public void PlaySound1()
     {
         sound1.Play();
@@ -111,20 +155,11 @@ public class PianoController : MonoBehaviour
             ResetNoteDisplay();
         }
         notesPlayed.Add(1);
-        timeLeftToPlay = maxTimeBetweenNotes;
-    }
-
-    void CheckNotesPlayed()
-    {
-        if (notesPlayed[0] == coinNotes[0] && notesPlayed[1] == coinNotes[1] && notesPlayed[2] == coinNotes[2])
+        if (notesPlayed.Count == 3)
         {
-            if (coinSfxList.Count > 0)
-            {
-                Destroy(coinSfxList[0]);
-                coinSfxList.RemoveAt(0);
-            }
-            return;
+            CheckNotesPlayed();
         }
+        timeLeftToPlay = maxTimeBetweenNotes;
     }
 
     public void PlaySound2()
@@ -252,5 +287,23 @@ public class PianoController : MonoBehaviour
     {
         GameObject sfx = Instantiate(coinSfx);
         coinSfxList.Add(sfx);
+    }
+
+    public static void QueueHeartSfx()
+    {
+        GameObject sfx = Instantiate(heartSfx);
+        heartSfxList.Add(sfx);
+    }
+
+    public static void QueueHitSfx()
+    {
+        GameObject sfx = Instantiate(hitSfx);
+        hitSfxList.Add(sfx);
+    }
+
+    public static void QueueDeathSfx()
+    {
+        GameObject sfx = Instantiate(deathSfx);
+        deathSfxList.Add(sfx);
     }
 }

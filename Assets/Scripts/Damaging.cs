@@ -24,6 +24,7 @@ public class Damaging : MonoBehaviour
             if (!ai.CheckInvincibility())
             {
                 ai.TakeDamage();
+                //PianoController.QueueHitSfx();
                 //Debug.Log("get hurt!");
             }
         }

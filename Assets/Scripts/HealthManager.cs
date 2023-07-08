@@ -11,7 +11,7 @@ public class HealthManager : MonoBehaviour
     private int currentHealth = 3;
     private static int correctHealth = 3;
 
-    public float timeLimit = 3f;
+    public float timeLimit = 5f;
     bool countingDown = false;
     float timeLeft = 0f;
 
@@ -77,10 +77,14 @@ public class HealthManager : MonoBehaviour
 
     public static void TakeDamage() {
         correctHealth -= 1;
-        if (correctHealth < 0)
+        if (correctHealth <= 0) //died
         {
             correctHealth = 3;
             ScoreManager.correctScore = 0;
+            PianoController.QueueDeathSfx();
+        } else
+        {
+            PianoController.QueueHitSfx();
         }
     }
 
