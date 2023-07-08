@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Damaging : MonoBehaviour
 {
+    bool wasHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,12 @@ public class Damaging : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.x <= -8 && !wasHit)
+        {
+            Debug.Log("dodged obstacles, gaining points!");
+            ScoreManager.GainPoints(50);
+            wasHit = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,8 +30,7 @@ public class Damaging : MonoBehaviour
             if (!ai.CheckInvincibility())
             {
                 ai.TakeDamage();
-                //PianoController.QueueHitSfx();
-                //Debug.Log("get hurt!");
+                wasHit = true;
             }
         }
     }

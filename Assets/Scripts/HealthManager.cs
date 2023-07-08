@@ -94,6 +94,7 @@ public class HealthManager : MonoBehaviour
         if (correctHealth > 3)
         {
             correctHealth = 3;
+            ScoreManager.GainPoints(150);
         }
     }
 }
