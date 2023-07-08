@@ -116,6 +116,8 @@ public class GameController : MonoBehaviour //spawns objects for AI
         }
         nextTerrain = terrainType;
 
+        Debug.Log("changing terrain: chose " + terrainType);
+        MusicController.SetCorrectMusic(terrainType);
         switch (terrainType)
         {
             case 0: return grassColor;
