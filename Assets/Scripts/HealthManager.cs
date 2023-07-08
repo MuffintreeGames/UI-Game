@@ -75,4 +75,13 @@ public class HealthManager : MonoBehaviour
             correctHealth = 0;
         }
     }
+
+    public static void GainHealth(int value)
+    {
+        correctHealth += value;
+        if (correctHealth > 3)
+        {
+            correctHealth = 3;
+        }
+    }
 }

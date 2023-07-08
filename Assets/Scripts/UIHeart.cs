@@ -18,6 +18,7 @@ public class UIHeart : MonoBehaviour
     public float resetTime = 3f;
     float resetTimeLeft;
 
+    private float blackness = 0f;
     Image imageRenderer;
     bool heartActive = true;
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class UIHeart : MonoBehaviour
         heartActive = true;
         held = false;
         imageRenderer = GetComponent<Image>();
+        blackness = 0f;
     }
 
     // Update is called once per frame
@@ -40,6 +42,9 @@ public class UIHeart : MonoBehaviour
                 {
                     held = false;
                     AddHeart();
+                } else
+                {
+                    blackness = addTimeLeft / timeToAdd;
                 }
             }
         } else
@@ -50,18 +55,30 @@ public class UIHeart : MonoBehaviour
                 if (resetTimeLeft <= 0f)
                 {
                     taps = 0;
-                    imageRenderer.sprite = fullHeart;
+                    //imageRenderer.sprite = fullHeart;
                 }
+            } else
+            {
+                blackness = 0f;
             }
+        }
+        imageRenderer.color = new Color(1f - blackness, 1f - blackness, 1f - blackness);
+        if (deactivateWasPreviouslyHeld)
+        {
+            wasPreviouslyHeld = false;
+            deactivateWasPreviouslyHeld = false;
         }
     }
 
+    bool wasPreviouslyHeld = false;
+    bool deactivateWasPreviouslyHeld = false;
     public void HeartHeld()
     {
         if (!heartActive && !held)
         {
             held = true;
             addTimeLeft = timeToAdd;
+            wasPreviouslyHeld = true;
         }
     }
 
@@ -71,37 +88,40 @@ public class UIHeart : MonoBehaviour
         {
             held = false;
         }
+        deactivateWasPreviouslyHeld = true;
     }
 
     public void HeartTapped()
     {
-        if (heartActive)
+        if (heartActive && !wasPreviouslyHeld)
         {
             taps += 1;
             if (taps < 3)
             {
-                imageRenderer.sprite = crackedHeart;
+                //imageRenderer.sprite = crackedHeart;
                 resetTimeLeft = resetTime;
+                blackness = .33f * taps;
             } else
             {
                 LoseHeart();
             }
         }
+        deactivateWasPreviouslyHeld = true;
     }
 
     public void AddHeart()
     {
-        Debug.Log("adding heart!");
         heartActive = true;
-        imageRenderer.sprite = fullHeart;
+        blackness = 0f;
+        //imageRenderer.sprite = fullHeart;
     }
 
     public void LoseHeart()
     {
-        Debug.Log("losing heart!");
         heartActive = false;
         taps = 0;
-        imageRenderer.sprite = emptyHeart;
+        blackness = 1f;
+        //imageRenderer.sprite = emptyHeart;
     }
 
     public bool IsHeartActive()

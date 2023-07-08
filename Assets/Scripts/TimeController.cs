@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     float timeToStart = 3f;
-    bool started = false;
+    static bool started = false;
     static float timeMultiplier = 1f;
     static float timePlayed = 0f;
     // Start is called before the first frame update
@@ -55,4 +55,6 @@ public class TimeController : MonoBehaviour
     {
         return timePlayed;
     }
+
+    public static bool IsStarted() { return started; }
 }

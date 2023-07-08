@@ -24,7 +24,15 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (invincible) { 
+        if (!TimeController.IsStarted())
+        {
+            rb.gravityScale = 0f;
+        } else
+        {
+            rb.gravityScale = 2f;
+        }
+
+        if (invincible) {
             remainingInvincibility -= TimeController.AdjustedDeltaTime();
             if (remainingInvincibility <= 0f) {
                 invincible = false;

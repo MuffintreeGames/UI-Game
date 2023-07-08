@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public int pointValue;
+    public int healthValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class Collectable : MonoBehaviour
         {
             Debug.Log("gain points!");
             ScoreManager.GainPoints(pointValue);
+            HealthManager.GainHealth(healthValue);
             Destroy(gameObject);
         }
     }
