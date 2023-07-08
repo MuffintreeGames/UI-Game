@@ -15,7 +15,7 @@ public class HealthManager : MonoBehaviour
     bool countingDown = false;
     float timeLeft = 0f;
 
-    bool requireReset = false;
+    public static bool requireReset = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +43,8 @@ public class HealthManager : MonoBehaviour
         {
             currentHealth += 1;
         }
-        if (currentHealth == 0)
-        {
-            requireReset = true;
-            correctHealth = 1; 
-        }
         
-        if (currentHealth != correctHealth || requireReset)
+        if (requireReset || currentHealth != correctHealth)
         {
             if (!countingDown)
             {
@@ -62,15 +57,15 @@ public class HealthManager : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 if (timeLeft <= 0)
                 {
-                    if (currentHealth != correctHealth)
-                    {
-                        Debug.Log("Ran out of time fixing health!");
-                        GameOverManager.TriggerGameOver("Incorrect health: should have been " + correctHealth + " instead of " + currentHealth);
-                    }
-                    else
+                    if (requireReset)
                     {
                         Debug.Log("Ran out of time to reset game!");
                         GameOverManager.TriggerGameOver("Failed to reset after losing all hearts");
+                    }
+                    else
+                    {
+                        Debug.Log("Ran out of time fixing health!");
+                        GameOverManager.TriggerGameOver("Incorrect health: should have been " + correctHealth + " instead of " + currentHealth);
                     }
                 }
             }
@@ -80,16 +75,24 @@ public class HealthManager : MonoBehaviour
             {
                 Debug.Log("Fixed health! Stopping countdown!");
                 countingDown = false;
-                requireReset = false;
             }
         }
+    }
+
+    public void ResetHealth()
+    {
+        requireReset = false;
+        heart1.AddHeart();
+        heart2.AddHeart();
+        heart3.AddHeart();
     }
 
     public static void TakeDamage() {
         correctHealth -= 1;
         if (correctHealth < 0)
         {
-            correctHealth = 0;
+            correctHealth = 3;
+            requireReset = true;
         }
     }
 
