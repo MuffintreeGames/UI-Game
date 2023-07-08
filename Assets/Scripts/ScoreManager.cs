@@ -11,16 +11,19 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI tens;
     public TextMeshProUGUI ones;
 
-    public float timeLimit = 5f;
-    bool countingDown = false;
-    float timeLeft = 0f;
+    public static float timeLimit = 5f;
+    static bool countingDown = false;
+    static float timeLeft = 0f;
+    static GameObject checkpoint;
 
     public static int correctScore = 0;
-    int currentScore = 0;
+    public static int currentScore = 0;
     // Start is called before the first frame update
     void Start()
     {
         correctScore = 0;
+        countingDown = false;
+        checkpoint = (GameObject)Resources.Load("ScoreCheckpoint");
     }
 
     // Update is called once per frame
@@ -55,7 +58,37 @@ public class ScoreManager : MonoBehaviour
 
     public static void GainPoints(int points)
     {
+        if (countingDown)
+        {
+            Debug.Log("gained points while already counting down, creating score checkpoint!");
+            GameObject newCheckpoint = Instantiate(checkpoint);
+            newCheckpoint.GetComponent<ScoreCheckpoint>().targetPoints = correctScore;
+        }
         correctScore += points;
+    }
+
+    public static void LosePoints(int points)
+    {
+        if (currentScore == 0)
+        {
+            return;
+        }
+
+        if (countingDown)
+        {
+            Debug.Log("lost points while already counting down, creating score checkpoint!");
+            GameObject newCheckpoint = Instantiate(checkpoint);
+            newCheckpoint.GetComponent<ScoreCheckpoint>().targetPoints = correctScore;
+        }
+        correctScore -= points;
+    }
+
+    public static void AddTime(float time)
+    {
+        if (countingDown && time > timeLeft)
+        {
+            timeLeft = time;
+        }
     }
 
     public void Reset()

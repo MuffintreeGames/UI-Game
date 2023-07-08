@@ -10,7 +10,7 @@ public class UIHeart : MonoBehaviour
     public Sprite crackedHeart;
     public Sprite emptyHeart;
 
-    private float timeToAdd = 0.7f;
+    private float timeToAdd = 0.4f;
     bool held = false;
     float addTimeLeft = 0f;
 
