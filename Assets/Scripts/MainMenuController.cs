@@ -45,6 +45,12 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Instructions");
     }
 
+    public void LoadInstructions2()
+    {
+        GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
+        SceneManager.LoadScene("Instructions2");
+    }
+
     public void ReturnToTitle()
     {
         GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
