@@ -9,6 +9,7 @@ public class UIHeart : MonoBehaviour
     public Sprite fullHeart;
     public Sprite crackedHeart;
     public Sprite emptyHeart;
+    public AudioSource sound;
 
     private float timeToAdd = 0.4f;
     bool held = false;
@@ -98,6 +99,7 @@ public class UIHeart : MonoBehaviour
     {
         if (heartActive && !wasPreviouslyHeld)
         {
+            sound.Play();
             taps += 1;
             if (taps < 3)
             {
