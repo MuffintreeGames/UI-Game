@@ -7,9 +7,9 @@ public class TimerController : MonoBehaviour
     public Image timer;
     public TextMeshProUGUI timePlayed;
 
-    float timeLimit = 30f;
-    float timeLeft = 30f;
-    float timeIncrement = 10f;
+    public static float timeLimit = 30f;
+    public static float timeLeft = 30f;
+    public static float timeIncrement = 10f;
 
     // Update is called once per frame
 
@@ -32,7 +32,7 @@ public class TimerController : MonoBehaviour
         }
     }
 
-    public void AddTime()
+    public static void AddTime()
     {
         timeLeft += timeIncrement;
         if (timeLeft > timeLimit) timeLeft = timeLimit;
