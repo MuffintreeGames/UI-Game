@@ -19,18 +19,21 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGame()
     {
+        GameObject.Find("MusicPlayer").GetComponent<MenuMusic>().StopMusic();
         NormalModeHandler.DeactivateNormalMode();
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
     }
 
     public void LoadNormal()
     {
+        GameObject.Find("MusicPlayer").GetComponent<MenuMusic>().StopMusic();
         NormalModeHandler.ActivateNormalMode();
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
     }
 
     public void LoadCredits()
     {
+        GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
         SceneManager.LoadScene("Credits");
     }
 
