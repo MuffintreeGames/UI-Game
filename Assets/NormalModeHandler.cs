@@ -28,6 +28,11 @@ public class NormalModeHandler : MonoBehaviour
     {
         normalMode = true;
         //GetComponent<Image>().enabled = true;
+    }
 
+    public static void DeactivateNormalMode()
+    {
+        normalMode = false;
+        //GetComponent<Image>().enabled = true;
     }
 }

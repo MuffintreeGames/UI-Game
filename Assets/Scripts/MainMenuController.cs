@@ -19,6 +19,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGame()
     {
+        NormalModeHandler.DeactivateNormalMode();
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
     }
 

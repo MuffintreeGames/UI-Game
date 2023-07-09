@@ -13,8 +13,8 @@ public class TimeController : MonoBehaviour
     static bool started = false;
     static float timeMultiplier = 1f;
     static float timePlayed = 0f;
-    float speedIncreaseInterval = 60f;
-    float timeUntilSpeedIncrease = 60f;
+    float speedIncreaseInterval = 45f;
+    float timeUntilSpeedIncrease = 45f;
     static float timeToDisplaySpeedup = 3f;
     public static float timeLeftInDisplaySpeedup = 0f;
 
