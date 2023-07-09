@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click + wind clockwise to keep timer running
+  m_text: 'Click + wind clockwise to keep timer ticking
 
 
 
