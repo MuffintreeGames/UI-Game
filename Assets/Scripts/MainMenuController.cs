@@ -22,6 +22,12 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
     }
 
+    public void LoadNormal()
+    {
+        NormalModeHandler.ActivateNormalMode();
+        StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
+    }
+
     public void LoadCredits()
     {
         SceneManager.LoadScene("Credits");

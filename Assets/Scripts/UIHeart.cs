@@ -46,6 +46,9 @@ public class UIHeart : MonoBehaviour
                 {
                     blackness = addTimeLeft / timeToAdd;
                 }
+            } else
+            {
+                blackness = 1f;
             }
         } else
         {

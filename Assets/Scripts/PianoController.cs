@@ -66,6 +66,10 @@ public class PianoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (NormalModeHandler.normalMode)
+        {
+            return;
+        }
         SoundSwitchboard();
         if (timeLeftToPlay > 0f)
         {
@@ -286,24 +290,40 @@ public class PianoController : MonoBehaviour
 
     public static void QueueCoinSfx()
     {
+        if (NormalModeHandler.normalMode)
+        {
+            return;
+        }
         GameObject sfx = Instantiate(coinSfx);
         coinSfxList.Add(sfx);
     }
 
     public static void QueueHeartSfx()
     {
+        if (NormalModeHandler.normalMode)
+        {
+            return;
+        }
         GameObject sfx = Instantiate(heartSfx);
         heartSfxList.Add(sfx);
     }
 
     public static void QueueHitSfx()
     {
+        if (NormalModeHandler.normalMode)
+        {
+            return;
+        }
         GameObject sfx = Instantiate(hitSfx);
         hitSfxList.Add(sfx);
     }
 
     public static void QueueDeathSfx()
     {
+        if (NormalModeHandler.normalMode)
+        {
+            return;
+        }
         GameObject sfx = Instantiate(deathSfx);
         deathSfxList.Add(sfx);
     }
