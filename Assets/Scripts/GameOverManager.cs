@@ -16,7 +16,7 @@ public class GameOverManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        triggered = false;
     }
 
     // Update is called once per frame
