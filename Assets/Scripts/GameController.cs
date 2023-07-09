@@ -9,6 +9,7 @@ public class SwitchTerrainEvent : UnityEvent
 }
 public class GameController : MonoBehaviour //spawns objects for AI
 {
+    public Camera camera;
     public float timeBetweenObstacles = 3f;
     float timeLeftToObstacle = 1f;
     public GameObject coin;
@@ -18,9 +19,13 @@ public class GameController : MonoBehaviour //spawns objects for AI
     public GameObject terrainChange;
     public GameObject ground;
     public Color grassColor;
+    public Color grassBackgroundColor;
     public Color iceColor;
+    public Color iceBackgroundColor;
     public Color stoneColor;
+    public Color stoneBackgroundColor;
     public Color beachColor;
+    public Color beachBackgroundColor;
     public float spawnXPosition;
     public float spawnYPositionLow;
     public float spawnYPositionMid;
@@ -66,7 +71,8 @@ public class GameController : MonoBehaviour //spawns objects for AI
             objectType = Random.Range(0, 5);
         } else
         {
-            objectType = Random.Range(0, 6);
+            //objectType = Random.Range(0, 6);
+            objectType = 5;
         }
         GameObject obstacle = null;
         int spawnHeight = Random.Range(0, 3);
@@ -90,9 +96,19 @@ public class GameController : MonoBehaviour //spawns objects for AI
             case 3: obstacle = Instantiate(spike, spawnPosition, Quaternion.identity); jump = true; desirable = false; break;
             case 4: obstacle = Instantiate(coin, spawnPosition, Quaternion.identity); jump = true; break;
             case 5:     //spawn terrain change object
-                Color terrainColor = SelectTerrain();
+                int terrainType = SelectTerrain();
                 GameObject terrain = Instantiate(terrainChange, new Vector3(spawnXPosition + 10f, ground.transform.position.y, -1f), Quaternion.identity) ;
+                Color terrainColor = grassColor;
+                Color backgroundColor = grassBackgroundColor;
+                switch (terrainType)
+                {
+                    case 0: terrainColor = grassColor; backgroundColor = grassBackgroundColor; break;
+                    case 1: terrainColor = iceColor; backgroundColor = iceBackgroundColor; break;
+                    case 2: terrainColor = stoneColor; backgroundColor = stoneBackgroundColor; break;
+                    case 3: terrainColor = beachColor; backgroundColor = beachBackgroundColor; break;
+                }
                 terrain.GetComponent<SpriteRenderer>().color = terrainColor;
+                terrain.transform.GetChild(0).GetComponent<SpriteRenderer>().color = backgroundColor;
                 timeUntilTerrain = timeBetweenTerrainChanges; 
                 break;
         }
@@ -110,7 +126,7 @@ public class GameController : MonoBehaviour //spawns objects for AI
         }
     }
 
-    Color SelectTerrain()
+    int SelectTerrain()
     {
         int terrainType = Random.Range(0, 3);
         if (terrainType == currentTerrain)
@@ -121,14 +137,14 @@ public class GameController : MonoBehaviour //spawns objects for AI
 
         Debug.Log("changing terrain: chose " + terrainType);
         MusicController.SetCorrectMusic(terrainType);
-        switch (terrainType)
+        /*switch (terrainType)
         {
             case 0: return grassColor;
             case 1: return iceColor;
             case 2: return stoneColor;
             case 3: return beachColor;
-        }
-        return grassColor;
+        }*/
+        return terrainType;
     }
 
     void ActivateTerrain()
@@ -136,10 +152,10 @@ public class GameController : MonoBehaviour //spawns objects for AI
         currentTerrain = nextTerrain;
         switch (currentTerrain)
         {
-            case 0: ground.GetComponent<SpriteRenderer>().color = grassColor; break;
-            case 1: ground.GetComponent<SpriteRenderer>().color = iceColor; break;
-            case 2: ground.GetComponent<SpriteRenderer>().color = stoneColor; break;
-            case 3: ground.GetComponent<SpriteRenderer>().color = beachColor; break;
+            case 0: ground.GetComponent<SpriteRenderer>().color = grassColor; camera.backgroundColor = grassBackgroundColor;  break;
+            case 1: ground.GetComponent<SpriteRenderer>().color = iceColor; camera.backgroundColor = iceBackgroundColor; break;
+            case 2: ground.GetComponent<SpriteRenderer>().color = stoneColor; camera.backgroundColor = stoneBackgroundColor; break;
+            case 3: ground.GetComponent<SpriteRenderer>().color = beachColor; camera.backgroundColor = beachBackgroundColor; break;
         }
     }
 }
