@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI tens;
     public TextMeshProUGUI ones;
 
+    public AudioSource sound;
+
     public static float timeLimit = 5f;
     static bool countingDown = false;
     static float timeLeft = 0f;
@@ -101,6 +103,7 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseThousands()
     {
+        sound.Play();
         int value = int.Parse(thousands.text);
         value += 1;
         if (value > 9)
@@ -112,6 +115,7 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseThousands()
     {
+        sound.Play();
         int value = int.Parse(thousands.text);
         value -= 1;
         if (value < 0)
@@ -123,6 +127,7 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseHundreds()
     {
+        sound.Play();
         int value = int.Parse(hundreds.text);
         value += 1;
         if (value > 9)
@@ -134,6 +139,7 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseHundreds()
     {
+        sound.Play();
         int value = int.Parse(hundreds.text);
         value -= 1;
         if (value < 0)
@@ -145,6 +151,7 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseTens()
     {
+        sound.Play();
         int value = int.Parse(tens.text);
         value += 5;
         if (value > 9)
@@ -156,6 +163,7 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseTens()
     {
+        sound.Play();
         int value = int.Parse(tens.text);
         value -= 5;
         if (value < 0)
@@ -167,6 +175,7 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseOnes()
     {
+        sound.Play();
         int value = int.Parse(ones.text);
         value += 5;
         if (value > 9)
@@ -178,6 +187,7 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseOnes()
     {
+        sound.Play();
         int value = int.Parse(ones.text);
         value -= 5;
         if (value < 0)
