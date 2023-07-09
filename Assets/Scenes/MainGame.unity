@@ -8224,6 +8224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topRegion: 0
   scoreManager: {fileID: 965359390}
+  healthManager: {fileID: 93755134}
+  timerManager: {fileID: 2106989735}
   spriteRenderer: {fileID: 1374827970}
   Up: {fileID: 21300000, guid: ae3a897bc7d519a41b3ca37627a9c109, type: 3}
   Down: {fileID: 21300000, guid: a3fd3459efea8f04aaa3384f002f1c65, type: 3}
@@ -9188,7 +9190,7 @@ MonoBehaviour:
   button2: {fileID: 1570431696}
   button3: {fileID: 2004590315}
   button4: {fileID: 1626815652}
-  timeLimit: 5
+  timeLimit: 8
 --- !u!1 &1558663542
 GameObject:
   m_ObjectHideFlags: 0
@@ -10556,6 +10558,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topRegion: 1
   scoreManager: {fileID: 965359390}
+  healthManager: {fileID: 93755134}
+  timerManager: {fileID: 2106989735}
   spriteRenderer: {fileID: 1374827970}
   Up: {fileID: 21300000, guid: ae3a897bc7d519a41b3ca37627a9c109, type: 3}
   Down: {fileID: 21300000, guid: a3fd3459efea8f04aaa3384f002f1c65, type: 3}

@@ -138,7 +138,7 @@ public class MusicController : MonoBehaviour
         correctMusic = choice;
         if (countingDown)
         {
-            timeLeft += 1;
+            timeLeft += 1f;
         }
     }
 

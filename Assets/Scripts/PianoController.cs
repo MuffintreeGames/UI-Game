@@ -310,6 +310,6 @@ public class PianoController : MonoBehaviour
 
     public static bool IsCountingDown()
     {
-        return (coinSfxList.Count > 0 && heartSfxList.Count > 0 && hitSfxList.Count > 0 && deathSfxList.Count > 0);
+        return (coinSfxList.Count > 0 || heartSfxList.Count > 0 || hitSfxList.Count > 0 || deathSfxList.Count > 0);
     }
 }

@@ -9,6 +9,8 @@ public class LeverController : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public bool topRegion = true;
     public static bool isValid = false;
     public ScoreManager scoreManager;
+    public HealthManager healthManager;
+    public TimerController timerManager;
     public Image spriteRenderer;
     public Sprite Up;
     public Sprite Down;
@@ -69,6 +71,8 @@ public class LeverController : MonoBehaviour, IPointerEnterHandler, IPointerExit
             print("sprite up");
             spriteRenderer.sprite = Up;
             scoreManager.Reset();
+            healthManager.ResetHealth();
+            timerManager.ResetTime();
             isValid = false;
             leverSound.Play();
         }
