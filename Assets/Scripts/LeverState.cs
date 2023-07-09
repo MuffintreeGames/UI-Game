@@ -23,22 +23,22 @@ public class LeverState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (mouse_over && topRegion)
         {
-            print("top region");
+            //print("top region");
             if (Input.GetMouseButton(0)) {
                 // Returns true for every frame that the mouse is being pressed.
-                print("isValid = true");
+                //print("isValid = true");
                 isValid = true;
                 }
             else
             {
-                // isValid = false;
-                // print("isValid = false");
+                 isValid = false;
+                 print("isValid = false");
             }
         }
         else if (mouse_over && !topRegion)
         {
-            print("bottom region");
-            if (isValid && Input.GetMouseButtonDown(0))
+            //print("bottom region");
+            if (isValid && Input.GetMouseButton(0))
             {
                 print("sprite down");
                 spriteRenderer.sprite = Down;
