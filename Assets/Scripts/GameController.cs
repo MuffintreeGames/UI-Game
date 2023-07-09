@@ -71,8 +71,7 @@ public class GameController : MonoBehaviour //spawns objects for AI
             objectType = Random.Range(0, 5);
         } else
         {
-            //objectType = Random.Range(0, 6);
-            objectType = 5;
+            objectType = Random.Range(0, 6);
         }
         GameObject obstacle = null;
         int spawnHeight = Random.Range(0, 3);

@@ -42,5 +42,10 @@ public class TimerController : MonoBehaviour
     {
         timePlayed.text = ((int)TimeController.GetTimePlayed()).ToString();
     }
+
+    public static bool IsCountingDown()
+    {
+        return timeLeft < 7f;
+    }
 }
 

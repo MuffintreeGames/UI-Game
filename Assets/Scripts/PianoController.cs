@@ -307,4 +307,9 @@ public class PianoController : MonoBehaviour
         GameObject sfx = Instantiate(deathSfx);
         deathSfxList.Add(sfx);
     }
+
+    public static bool IsCountingDown()
+    {
+        return (coinSfxList.Count > 0 && heartSfxList.Count > 0 && hitSfxList.Count > 0 && deathSfxList.Count > 0);
+    }
 }

@@ -186,4 +186,9 @@ public class ScoreManager : MonoBehaviour
         }
         ones.text = value.ToString();
     }
+
+    public static bool IsCountingDown()
+    {
+        return countingDown;
+    }
 }
