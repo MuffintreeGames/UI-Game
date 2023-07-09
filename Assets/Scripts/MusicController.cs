@@ -19,7 +19,7 @@ public class MusicController : MonoBehaviour
 
     private static int correctMusic = 0;
     static bool countingDown = false;
-    public float timeLimit = 5f;
+    public float timeLimit = 9f;
     static float timeLeft = 0f;
     // Start is called before the first frame update
     void Start()
@@ -138,7 +138,12 @@ public class MusicController : MonoBehaviour
         correctMusic = choice;
         if (countingDown)
         {
-            timeLeft += 1;
+            timeLeft += 1f;
         }
+    }
+
+    public static bool IsCountingDown()
+    {
+        return countingDown && timeLeft < 5f;
     }
 }

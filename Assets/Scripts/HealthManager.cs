@@ -118,4 +118,9 @@ public class HealthManager : MonoBehaviour
             newCheckpoint.GetComponent<HealthCheckpoint>().targetHealth = correctHealth - 1;
         }
     }
+
+    public static bool IsCountingDown()
+    {
+        return countingDown;
+    }
 }

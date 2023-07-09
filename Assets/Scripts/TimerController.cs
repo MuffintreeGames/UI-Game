@@ -7,6 +7,8 @@ public class TimerController : MonoBehaviour
     public Image timer;
     public TextMeshProUGUI timePlayed;
 
+    float internalTime = 0f;
+
     public static float timeLimit = 30f;
     public static float timeLeft = 30f;
     public static float timeIncrement = 10f;
@@ -16,6 +18,7 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         timeLeft = 30f;
+        internalTime = 0f;
     }
     void Update()
     {
@@ -28,7 +31,7 @@ public class TimerController : MonoBehaviour
         else
         {
             Debug.Log("Ran out of time fixing timer!");
-            GameOverManager.TriggerGameOver("Times up! Remember to wind up the timer!");
+            GameOverManager.TriggerGameOver("Time's up! Remember to wind up the timer!");
         }
     }
 
@@ -40,7 +43,18 @@ public class TimerController : MonoBehaviour
 
     void UpdateTimePlayed()
     {
-        timePlayed.text = ((int)TimeController.GetTimePlayed()).ToString();
+        internalTime += TimeController.AdjustedDeltaTime();
+        timePlayed.text = ((int)internalTime).ToString();
+    }
+
+    public static bool IsCountingDown()
+    {
+        return timeLeft < 7f;
+    }
+
+    public void ResetTime()
+    {
+        internalTime = 0f;
     }
 }
 

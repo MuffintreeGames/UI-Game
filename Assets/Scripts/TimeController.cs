@@ -10,6 +10,8 @@ public class TimeController : MonoBehaviour
     static float timePlayed = 0f;
     float speedIncreaseInterval = 60f;
     float timeUntilSpeedIncrease = 60f;
+    static float timeToDisplaySpeedup = 3f;
+    public static float timeLeftInDisplaySpeedup = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +36,12 @@ public class TimeController : MonoBehaviour
         {
             timePlayed += Time.deltaTime;
             timeUntilSpeedIncrease -= Time.deltaTime;
+            timeLeftInDisplaySpeedup -= Time.deltaTime;
             if (timeUntilSpeedIncrease <= 0f)
             {
                 timeMultiplier += 0.2f;
                 timeUntilSpeedIncrease = speedIncreaseInterval;
+                timeLeftInDisplaySpeedup = timeToDisplaySpeedup;
             }
         }
     }
