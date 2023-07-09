@@ -19,6 +19,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGame()
     {
+        GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
         GameObject.Find("MusicPlayer").GetComponent<MenuMusic>().StopMusic();
         NormalModeHandler.DeactivateNormalMode();
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
@@ -26,6 +27,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadNormal()
     {
+        GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
         GameObject.Find("MusicPlayer").GetComponent<MenuMusic>().StopMusic();
         NormalModeHandler.ActivateNormalMode();
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
@@ -39,11 +41,13 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadInstructions()
     {
+        GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
         SceneManager.LoadScene("Instructions");
     }
 
     public void ReturnToTitle()
     {
+        GameObject.Find("SoundPlayer").GetComponent<AudioSource>().Play();
         SceneManager.LoadScene("MainMenu");
     }
 }
