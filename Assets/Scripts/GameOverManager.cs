@@ -32,8 +32,8 @@ public class GameOverManager : MonoBehaviour
 
     public static void TriggerGameOver(string cause)
     {
-        GameOverCause = cause;
-        Score = (int)TimeController.GetTimePlayed();
-        SceneManager.LoadScene("GameOver");
+       // GameOverCause = cause;
+       // Score = (int)TimeController.GetTimePlayed();
+       // SceneManager.LoadScene("GameOver");
     }
 }
