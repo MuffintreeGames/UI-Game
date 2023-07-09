@@ -13,6 +13,7 @@ public class LeverState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Sprite Up;
     public Sprite Down;
     private bool mouse_over = false;
+    public AudioSource leverSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +33,10 @@ public class LeverState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             else
             {
                  isValid = false;
-                 print("isValid = false");
+                 //print("isValid = false");
             }
         }
-        else if (mouse_over && !topRegion)
+        else if ((mouse_over && !topRegion))
         {
             //print("bottom region");
             if (isValid && Input.GetMouseButton(0))
@@ -45,11 +46,11 @@ public class LeverState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                // play sound effect
                 print("sprite up");
                 spriteRenderer.sprite = Up;
                 scoreManager.Reset();
                 isValid = false;
+                leverSound.Play();
             }
         }
     }
@@ -64,5 +65,13 @@ public class LeverState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         mouse_over = false;
         Debug.Log("Mouse exit");
+        if (!topRegion && isValid)
+        {
+            print("sprite up");
+            spriteRenderer.sprite = Up;
+            scoreManager.Reset();
+            isValid = false;
+            leverSound.Play();
+        }
     }
 }
