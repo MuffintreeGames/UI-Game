@@ -32,6 +32,8 @@ public class AIController : MonoBehaviour
             rb.gravityScale = 2f;
         }
 
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 180f * TimeController.AdjustedDeltaTime());
+
         if (invincible) {
             remainingInvincibility -= TimeController.AdjustedDeltaTime();
             if (remainingInvincibility <= 0f) {

@@ -3903,7 +3903,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.49019608, g: 0.6901961, b: 0.07450981, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6678,6 +6678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9519e9c1e2378d34ba0b067b718de9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 519420031}
   timeBetweenObstacles: 3
   coin: {fileID: 5717276793899034692, guid: f1001f423d75e7448bd88c681573af85, type: 3}
   spike: {fileID: 5717276793899034692, guid: d76335fce907f4d459c77823f30ba556, type: 3}
@@ -6686,9 +6687,13 @@ MonoBehaviour:
   terrainChange: {fileID: 2182630181856344177, guid: 9ae49ae4cbd461141a205299eaf192f1, type: 3}
   ground: {fileID: 412393971}
   grassColor: {r: 0, g: 1, b: 0.09506822, a: 1}
+  grassBackgroundColor: {r: 0.49019608, g: 0.6901961, b: 0.07450981, a: 1}
   iceColor: {r: 0, g: 1, b: 0.8794136, a: 1}
+  iceBackgroundColor: {r: 0.28081164, g: 0.6415094, b: 0.63142085, a: 1}
   stoneColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  stoneBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   beachColor: {r: 0.9580518, g: 0.9811321, b: 0.45724455, a: 1}
+  beachBackgroundColor: {r: 0, g: 0.5343809, b: 1, a: 1}
   spawnXPosition: 15
   spawnYPositionLow: 0.5
   spawnYPositionMid: 1.5

@@ -270,7 +270,7 @@ public class PianoController : MonoBehaviour
     public void PlaySound9()
     {
         sound9.Play();
-        if (notesPlayed.Count > 2)
+        /*if (notesPlayed.Count > 2)
         {
             ResetNoteDisplay();
         }
@@ -278,7 +278,9 @@ public class PianoController : MonoBehaviour
         if (notesPlayed.Count == 3)
         {
             CheckNotesPlayed();
-        }
+        }*/
+        ResetNoteDisplay();
+        timeLeftToPlay = 0f;
         timeLeftToPlay = maxTimeBetweenNotes;
     }
 
