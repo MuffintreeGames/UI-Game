@@ -623,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.999995, y: 180}
+  m_AnchoredPosition: {x: -9.999995, y: 190}
   m_SizeDelta: {x: 180, y: 244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845499452
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Runner Game Runner
+  m_text: "The \nRunning Game Runner"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 856dad16b7196d2448849dee1b48818f, type: 2}
   m_sharedMaterial: {fileID: 142800920367302089, guid: 856dad16b7196d2448849dee1b48818f, type: 2}
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da0c487d528c5b8439344d5f07235631, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 553cd267228e44049a1fedad7ed87dc3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
