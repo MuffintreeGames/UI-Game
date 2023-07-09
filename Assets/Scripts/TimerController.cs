@@ -9,15 +9,15 @@ public class TimerController : MonoBehaviour
 
     float internalTime = 0f;
 
-    public static float timeLimit = 30f;
-    public static float timeLeft = 30f;
-    public static float timeIncrement = 10f;
+    public static float timeLimit = 20f;
+    public static float timeLeft = 20f;
+    public static float timeIncrement = 7f;
 
     // Update is called once per frame
 
     void Start()
     {
-        timeLeft = 30f;
+        timeLeft = 20f;
         internalTime = 0f;
     }
     void Update()
