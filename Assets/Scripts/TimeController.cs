@@ -61,7 +61,7 @@ public class TimeController : MonoBehaviour
         }
     }
 
-    public void StopGame()
+    public static void StopGame()
     {
         timeMultiplier = 0f;
     }

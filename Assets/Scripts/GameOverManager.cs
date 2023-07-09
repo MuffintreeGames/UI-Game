@@ -11,6 +11,8 @@ public class GameOverManager : MonoBehaviour
 
     public TextMeshProUGUI causeText;
     public TextMeshProUGUI scoreText;
+
+    static bool triggered = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +34,15 @@ public class GameOverManager : MonoBehaviour
 
     public static void TriggerGameOver(string cause)
     {
-        GameOverCause = cause;
-        Score = (int)TimeController.GetTimePlayed();
-        SceneManager.LoadScene("GameOver");
+        if (!triggered)
+        {
+            
+            GameOverCause = cause;
+            Score = (int)TimeController.GetTimePlayed();
+            TimeController.StopGame();
+            triggered = true;
+            GameObject.Find("GameOverScreen").GetComponent<TransferToGameOver>().turnedOn = true;
+        }
+        //SceneManager.LoadScene("GameOver");
     }
 }
